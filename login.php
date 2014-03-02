@@ -64,9 +64,9 @@ $content = '
 
             if($username && $password){
                     $connect = mysql_connect("localhost","root","159357") or die("Couldn't c");
-                    mysql_select_db("user") or die("Couldn't db");
+                    mysql_select_db("recommender_sys") or die("Couldn't db");
         
-                    $query = mysql_query("SELECT * FROM user_info WHERE username = '$username'");
+                    $query = mysql_query("SELECT * FROM user WHERE username = '$username'");
 
                     $numrows = mysql_num_rows($query);
         
@@ -117,7 +117,7 @@ $content = '
                 <ul id="nav">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="Course.php">Course</a></li>
-                    <li><a href="#">Recommendation</a></li><li>
+                    <!--<li><a href="#">Recommendation</a></li><li>-->
                     <li><a href="#">About</a></li>
                     <!--<li><a href="Management.php">Management</a></li>-->
                 </ul>

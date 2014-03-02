@@ -4,5 +4,5 @@
 $host = "localhost";
 $user = "root";
 $passwd = "159357";
-$database = "coffee";
+$database = "recommender_sys";
 ?>

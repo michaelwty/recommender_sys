@@ -10,7 +10,7 @@
     mysql_select_db($database);
 
     //Get course info from database.
-    $result1 = mysql_query("SELECT * FROM `course`") or die(mysql_error());
+    $result1 = mysql_query("SELECT * FROM `review` INNER JOIN `course` WHERE `review`.`username`='$username' AND `review`.`coursename` = `course`.`coursename`") or die(mysql_error());
     $courselist = array();
     $courselink = array();
 
@@ -69,23 +69,22 @@
 
             <nav id="navigation">
                 <ul id="nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="Course.php">Course</a></li>
+                    <li><a href="member_index.php">Home</a></li>
+                    <li><a href="member_course.php">Course</a></li>
                     <li><a href="#">About</a></li>
-                    <!--
-                    <li><a href="#">Recommendation</a></li><li>                    
-                    <li><a href="Management.php">Management</a></li>
-                    -->
+                    <li><a href="member_recommend.php">Recommendation</a></li><li>                    
+                    <li><a href="member_management.php">Management</a></li>
                 </ul>
             </nav>
             
             <div id="content_area">
                 <?php 
-                    echo 'Course List','<br>';
+                    echo 'Your Course History','<br>';
                     for($j = 0; $j < count($courselist); $j++){
                         echo '<li><a href="'.$courselink[$j].'">'.$courselist[$j].'</a></li>','<br>';
                     }
-             
+                    
+                    echo 'Course You May Like','<br>';               
                 ?>
             </div>
             

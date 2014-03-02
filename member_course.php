@@ -69,13 +69,11 @@
 
             <nav id="navigation">
                 <ul id="nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="Course.php">Course</a></li>
+                    <li><a href="member_index.php">Home</a></li>
+                    <li><a href="member_course.php">Course</a></li>
                     <li><a href="#">About</a></li>
-                    <!--
-                    <li><a href="#">Recommendation</a></li><li>                    
-                    <li><a href="Management.php">Management</a></li>
-                    -->
+                    <li><a href="member_recommend.php">Recommendation</a></li><li>                    
+                    <li><a href="member_management.php">Management</a></li>
                 </ul>
             </nav>
             
