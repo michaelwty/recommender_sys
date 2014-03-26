@@ -1,42 +1,39 @@
 <?php
 $title = "Home";
 $content = '
-        <img src="Images/coffee1.png" class="imgLeft" />
-        <h3>New Courses are coming!!!</h3>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lectus urna,
-            viverra in luctus quis, ullamcorper quis lorem. Vestibulum vulputate pellentesque
-            velit, et placerat dolor pulvinar in. Class aptent taciti sociosqu ad litora torquent
-            per conubia nostra, per inceptos himenaeos. Sed sit amet velit at purus elementum
-            dapibus. Nulla dapibus auctor vulputate. Sed cursus nisi at mauris mollis semper.
-            Vestibulum consectetur cursus dui sit amet pretium.
-        </p>
+        <h2>New Courses Are Coming!!!</h2>
+        <img src="Images/logo_small.png" class="imgLeft" />
+        <br>
+        <h2>The Data Scientist’s Toolbox</h2>
+        <p><h4>
+            In this course you will get an introduction to the main tools and ideas in the data scientists
+            toolbox. The course gives an overview of the data, questions, and tools that data analysts and 
+            data scientists work with. There are two components to this course. The first is a conceptual 
+            introduction to the ideas behind turning data into actionable knowledge. The second is a practical 
+            introduction to the tools that will be used in the program like version control, markdown, git, 
+            Github, R, and Rstudio.
+        </h4></p>
 
-        <img src="Images/coffee2.png" class="imgRight" />
-        <h3>Title 2</h3>
-        <p>
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-            himenaeos. Donec porttitor placerat nunc a consectetur. Ut fermentum eleifend molestie.
-            Donec fermentum risus sit amet ante cursus cursus. In hac habitasse platea dictumst.
-            Praesent semper ante ut felis molestie aliquet. Nam quis dui a magna molestie blandit
-            id et justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Sed felis mauris, mattis a vulputate a, gravida nec metus.
-            Vivamus elit augue, ullamcorper eget scelerisque vitae, tincidunt eget lorem. Curabitur
-            id nibh libero, sed pulvinar nisi. Curabitur ultrices, neque in dignissim viverra,
-            justo nisl dignissim magna, a tempor eros turpis in diam. Suspendisse potenti. Sed
-            tincidunt est ac elit bibendum nec varius ante vestibulum.
-         </p>
+        <img src="Images/logo_small (1).png" class="imgRight" />
+        <h2>Mobile Cloud Computing with Android</h2>
+        <p><h4>
+            In this course----the third in a trans-institution sequence of MOOCs on Mobile Cloud Computing 
+            with Android--we will learn how to connect Android mobile devices to cloud computing and data 
+            storage resources, essentially turning a device into an extension of powerful cloud-based services 
+            on popular cloud computing platforms, such as Google App Engine and Amazon EC2.
+         </h4></p>
+         <br><br><br><br>
 
-         <img src="Images/coffee3.png" class="imgLeft" />
-         <h3>Title 3</h3>
-         <p>
-            In hac habitasse platea dictumst. In purus leo, consequat nec porta a, varius sed
-            dui. Nulla placerat mollis tincidunt. Praesent at elit mi, a posuere quam. Suspendisse
-            vel leo eu orci lacinia vestibulum. Fusce vel sem fermentum lectus tempus ultrices.
-            Morbi arcu sem, rhoncus sit amet rutrum eget, interdum sit amet leo. Ut mattis lorem
-            vitae dolor tincidunt mattis a lacinia velit. Cras sed nibh at urna imperdiet laoreet
-            quis a risus.
-         </p>';
+         <img src="Images/logo_small (2).png" class="imgLeft" />
+         <h2>Reasoning, Data Analysis and Writing</h2>
+         <p><h4>
+            Reasoning is important.  This course will teach you how to do it well.  You will learn some simple 
+            but vital rules to follow in thinking about any topic at all and some common and tempting mistakes 
+            to avoid in reasoning.  We will discuss how to identify, analyze, and evaluate arguments by other 
+            people (including politicians, used car salesmen, and teachers) and how to construct arguments of 
+            your own in order to help you decide what to believe or what to do. These skills will be useful in 
+            dealing with whatever matters most to you.
+         </h4></p>';
 include 'Template.php';
     
 ?>

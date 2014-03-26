@@ -1,46 +1,3 @@
-<?php
-    
-    session_start();
-    require("Model/Credentials.php");
-    //check user&pwd
-    $username = $_SESSION['username'];
-    $password = $_SESSION['password'];
-
-    mysql_connect($host, $user, $passwd) or die(mysql_error());
-    mysql_select_db($database);
-
-    //Get course info from database.
-    $result1 = mysql_query("SELECT * FROM `course`") or die(mysql_error());
-    $courselist = array();
-    $courselink = array();
-
-    while ($row = mysql_fetch_array($result1)) {
-        $i=0;
-        array_push($courselist, $row['coursename']);
-        array_push($courselink, $row['link']);
-        $i++;
-    }
-
-    //Get recommendation info from database
-    //$result2 = mysql_query("SELECT * FROM `review` INNER JOIN `attribute` INNER JOIN `preference` WHERE `review`.`username`='$username' AND `preference`.`username`='$username'      //                        AND `review`.`coursename` = `attribute`.`coursename`") or die(mysql_error());
-    //$courselist = array();
-    //$courselink = array();
-
-    //while($row = mysql_fetch_array($result2)){
-    //    ;
-    //}
-
-
-
-    //close    
-    mysql_close();
-
-    $title = "Course";
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,19 +16,19 @@
             </div>
             
     <?php
-        //session_start();
+        session_start();
         if($_SESSION['username']){
             echo $_SESSION['username'].", you are a member.";
             echo "Welcome, ". $_SESSION['username']."!", '<br>';
-        
+            echo "<a href='logout.php'>Logout</a>";
         }
         else{
              echo "You are logged out. <a href='index.php'>Click</a> here to return.";
         }
-        echo "<a href='logout.php'>Logout</a>"; 
+          
     ?>
-
-            <div id="navig-bar" style="background-color:#a9a6a6">
+            
+             <div id="navig-bar" style="background-color:#a9a6a6">
              <ul class="nav nav-tabs nav-justified">
                   <li class="active"><a href="member_index.php">Home &nbsp <span class="glyphicon glyphicon-home"></span></a></li>
                   <li><a href="member_course.php">Course &nbsp <span class="glyphicon glyphicon-list-alt"></span></a></li>
@@ -86,15 +43,31 @@
                   <li><a href="member_management.php">Management &nbsp <span class="glyphicon glyphicon-wrench"></span></a></li>
               </ul>
               </div>
-            
+
+
             <div id="content_area">
-                <?php 
-                    echo 'Course List','<br>';
-                    for($j = 0; $j < count($courselist); $j++){
-                        echo '<li><a href="'.$courselink[$j].'">'.$courselist[$j].'</a></li>','<br>';
-                    }
-             
-                ?>
+<?php 
+
+                $algorithms = 'unchecked';
+                $software = 'unchecked';
+                $systems = 'unchecked';
+                $theory = 'unchecked';
+                $web = 'unchecked';
+               
+               
+                if ( isset($_POST['submit']) ) {
+
+                    echo 'Algorithms Level Checked'.' '.$_POST['algorithms'].'<br>';
+                    echo 'Software Engineering Level Checked'.' '.$_POST['software'].'<br>';
+                    echo 'Theory Level Checked'.' '.$_POST['theory'].'<br>';
+                    echo 'Systems Level Checked'.' '.$_POST['systems'].'<br>';
+                    echo 'Web design Level Checked'.' '.$_POST['web'].'<br>';
+
+                    
+                   
+                }
+                 
+ ?>
             </div>
             
             <div id="sidebar">

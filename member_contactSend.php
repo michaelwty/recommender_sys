@@ -1,42 +1,3 @@
-<?php
-$title = "Member";
-$content = '
-        <h2>New Courses Are Coming!!!</h2>
-        <img src="Images/logo_small.png" class="imgLeft" />
-        <br>
-        <h2>The Data Scientist’s Toolbox</h2>
-        <p><h4>
-            In this course you will get an introduction to the main tools and ideas in the data scientists
-            toolbox. The course gives an overview of the data, questions, and tools that data analysts and 
-            data scientists work with. There are two components to this course. The first is a conceptual 
-            introduction to the ideas behind turning data into actionable knowledge. The second is a practical 
-            introduction to the tools that will be used in the program like version control, markdown, git, 
-            Github, R, and Rstudio.
-        </h4></p>
-
-        <img src="Images/logo_small (1).png" class="imgRight" />
-        <h2>Mobile Cloud Computing with Android</h2>
-        <p><h4>
-            In this course----the third in a trans-institution sequence of MOOCs on Mobile Cloud Computing 
-            with Android--we will learn how to connect Android mobile devices to cloud computing and data 
-            storage resources, essentially turning a device into an extension of powerful cloud-based services 
-            on popular cloud computing platforms, such as Google App Engine and Amazon EC2.
-         </h4></p>
-         <br><br><br><br>
-
-         <img src="Images/logo_small (2).png" class="imgLeft" />
-         <h2>Reasoning, Data Analysis and Writing</h2>
-         <p><h4>
-            Reasoning is important.  This course will teach you how to do it well.  You will learn some simple 
-            but vital rules to follow in thinking about any topic at all and some common and tempting mistakes 
-            to avoid in reasoning.  We will discuss how to identify, analyze, and evaluate arguments by other 
-            people (including politicians, used car salesmen, and teachers) and how to construct arguments of 
-            your own in order to help you decide what to believe or what to do. These skills will be useful in 
-            dealing with whatever matters most to you.
-         </h4></p>';
-    
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,7 +46,85 @@ $content = '
 
 
             <div id="content_area">
-                <?php echo $content; ?>
+<?php
+if(isset($_POST['email'])) {
+	
+	// CHANGE THE TWO LINES BELOW
+	$email_to = "meghmeg17@gmail.com";
+	
+	$email_subject = "Email from meghz17 personal webpage";
+	
+	
+	function died($error) {
+		// your error code can go here
+		echo "We're sorry, but there's errors found with the form you submitted.<br /><br />";
+		echo $error."<br /><br />";
+		echo "Please go back and fix these errors.<br /><br />";
+		die();
+	}
+	
+	// validation expected data exists
+	if(!isset($_POST['first_name']) ||
+		!isset($_POST['last_name']) ||
+		!isset($_POST['email']) ||
+		!isset($_POST['telephone']) ||
+		!isset($_POST['comments'])) {
+		died('We are sorry, but there appears to be a problem with the form you submitted.');		
+	}
+	
+	$first_name = $_POST['first_name']; // required
+	$last_name = $_POST['last_name']; // required
+	$email_from = $_POST['email']; // required
+	$telephone = $_POST['telephone']; // not required
+	$comments = $_POST['comments']; // required
+	
+	$error_message = "";
+	$email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+  if(!preg_match($email_exp,$email_from)) {
+  	$error_message .= 'The Email Address you entered does not appear to be valid.<br />';
+  }
+	$string_exp = "/^[A-Za-z .'-]+$/";
+  if(!preg_match($string_exp,$first_name)) {
+  	$error_message .= 'The First Name you entered does not appear to be valid.<br />';
+  }
+  if(!preg_match($string_exp,$last_name)) {
+  	$error_message .= 'The Last Name you entered does not appear to be valid.<br />';
+  }
+  if(strlen($comments) < 2) {
+  	$error_message .= 'The Comments you entered do not appear to be valid.<br />';
+  }
+  if(strlen($error_message) > 0) {
+  	died($error_message);
+  }
+	$email_message = "Form details below.\n\n";
+	
+	function clean_string($string) {
+	  $bad = array("content-type","bcc:","to:","cc:","href");
+	  return str_replace($bad,"",$string);
+	}
+	
+	$email_message .= "First Name: ".clean_string($first_name)."\n";
+	$email_message .= "Last Name: ".clean_string($last_name)."\n";
+	$email_message .= "Email: ".clean_string($email_from)."\n";
+	$email_message .= "Telephone: ".clean_string($telephone)."\n";
+	$email_message .= "Comments: ".clean_string($comments)."\n";
+	
+	
+// create email headers
+$headers = 'From: '.$email_from."\r\n".
+'Reply-To: '.$email_from."\r\n" .
+'X-Mailer: PHP/' . phpversion();
+@mail($email_to, $email_subject, $email_message, $headers);  
+?>
+
+<!-- place your own success html below -->
+
+Thank you for contacting us. We will get back to you ASAP - Meghz and Wang
+
+<?php
+}
+die();
+?>
             </div>
             
             <div id="sidebar">

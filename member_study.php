@@ -1,59 +1,22 @@
-<?php
-$title = "Member";
-$content = '
-        <h2>New Courses Are Coming!!!</h2>
-        <img src="Images/logo_small.png" class="imgLeft" />
-        <br>
-        <h2>The Data Scientist’s Toolbox</h2>
-        <p><h4>
-            In this course you will get an introduction to the main tools and ideas in the data scientists
-            toolbox. The course gives an overview of the data, questions, and tools that data analysts and 
-            data scientists work with. There are two components to this course. The first is a conceptual 
-            introduction to the ideas behind turning data into actionable knowledge. The second is a practical 
-            introduction to the tools that will be used in the program like version control, markdown, git, 
-            Github, R, and Rstudio.
-        </h4></p>
-
-        <img src="Images/logo_small (1).png" class="imgRight" />
-        <h2>Mobile Cloud Computing with Android</h2>
-        <p><h4>
-            In this course----the third in a trans-institution sequence of MOOCs on Mobile Cloud Computing 
-            with Android--we will learn how to connect Android mobile devices to cloud computing and data 
-            storage resources, essentially turning a device into an extension of powerful cloud-based services 
-            on popular cloud computing platforms, such as Google App Engine and Amazon EC2.
-         </h4></p>
-         <br><br><br><br>
-
-         <img src="Images/logo_small (2).png" class="imgLeft" />
-         <h2>Reasoning, Data Analysis and Writing</h2>
-         <p><h4>
-            Reasoning is important.  This course will teach you how to do it well.  You will learn some simple 
-            but vital rules to follow in thinking about any topic at all and some common and tempting mistakes 
-            to avoid in reasoning.  We will discuss how to identify, analyze, and evaluate arguments by other 
-            people (including politicians, used car salesmen, and teachers) and how to construct arguments of 
-            your own in order to help you decide what to believe or what to do. These skills will be useful in 
-            dealing with whatever matters most to you.
-         </h4></p>';
-    
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><?php echo $title; ?></title>
+        <title><?php ?></title>
         <link rel="stylesheet" type="text/css" href="Styles/Stylesheet.css" />
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="public/css/main.css" />
     </head>
 
     <body>
         <div id="wrapper">
             <div id="banner">             
             </div>
-            
+
     <?php
         session_start();
         if($_SESSION['username']){
@@ -66,7 +29,7 @@ $content = '
         }
           
     ?>
-            
+
              <div id="navig-bar" style="background-color:#a9a6a6">
              <ul class="nav nav-tabs nav-justified">
                   <li class="active"><a href="member_index.php">Home &nbsp <span class="glyphicon glyphicon-home"></span></a></li>
@@ -82,21 +45,84 @@ $content = '
                   <li><a href="member_management.php">Management &nbsp <span class="glyphicon glyphicon-wrench"></span></a></li>
               </ul>
               </div>
+            </br>
+
+           
+            </div>
+
+            <div id="content_area"  width="100%">
+              <div id="chatstyle" style="height:100px;width:100%" align="center"">
+            <font color="black" size="5"><div align="center">&nbsp &nbsp <span class="label label-danger">Chat and study GEEKSS!</span></span>&nbsp &nbsp</div></font>
+            </div>
+
+            <table width="100%">
+            <tr>
+            <td>
 
 
-            <div id="content_area">
-                <?php echo $content; ?>
-            </div>
+
             
-            <div id="sidebar">
-                
-            </div>
+               
+
+
+
+
+
+                <div id="input">
+			    <div id="feedback"></div>
+			<form action="#" method="post" id="form_input">
+				
+
+                <div class="input-group">
+                  <span class="input-group-addon">Username</span>
+                  <!--<input type="text" name="sender" id="sender" class="form-control" style="max-width: 80%">-->
+                    <?php
+                        echo $_SESSION['username'];
+                    ?>
+                </div>
+
+                </br>
+                <div class="input-group">
+                  <span class="input-group-addon">Message&nbsp&nbsp</span>
+                  <input type="text" id="message" class="form-control" placeholder="Click Submit" style="height:100px;max-width:80%;">
+                </div>
+
+                </br>
+				
+				
+
+
+                <button class="btn btn-primary" id="send" value="Send Message" type="submit" name="Login">Send Message</button>
+
+
+
+			</form>
+		</div>
+	
+		<div class="well" id="messages">
+		
+		</div>
+
+
+           
+            </td>
+
+            <td>
+            <center><iframe style="opacity:0.9;"src="http://students.cse.tamu.edu/meghz17/index.html" src="demo_iframe.htm" name="iframe_a" width=800 height=550 style="float: left"></iframe></center>
+            </td>
+            </tr>
+            </table>
             
-            <footer>
-                <p>All rights reserved</p>
-            </footer>
         </div>
+
+
+        <script type="text/javascript" src="scripts/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="scripts/js/auto_chat.js"></script>
+		<script type="text/javascript" src="scripts/js/send.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+    
+      
+          
     </body>
 </html>
