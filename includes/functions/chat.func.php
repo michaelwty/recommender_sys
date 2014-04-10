@@ -2,7 +2,7 @@
 
 	function get_msg() {
 		
-		$query = "SELECT `Sender`, `Message` FROM `chat`.`chat` ORDER BY `Msg_ID` DESC";
+		$query = "SELECT `Sender`, `Message` FROM `recommender_sys`.`chat` ORDER BY `Msg_ID` DESC";
 		
 		$run = mysql_query($query);
 		
@@ -24,7 +24,7 @@
 			$sender 	= mysql_real_escape_string($sender);
 			$message 	= mysql_real_escape_string($message);
 			
-			$query = "INSERT INTO `chat`.`chat` VALUES (null, '{$sender}', '$message')";
+			$query = "INSERT INTO `recommender_sys`.`chat` VALUES (null, '{$sender}', '$message')";
 			
 			if($run = mysql_query($query)) {
 				return true;

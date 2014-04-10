@@ -32,14 +32,17 @@
              <ul class="nav nav-tabs nav-justified">
                   <li class="active"><a href="member_index.php">Home &nbsp <span class="glyphicon glyphicon-home"></span></a></li>
                   <li><a href="member_course.php">Course &nbsp <span class="glyphicon glyphicon-list-alt"></span></a></li>
-                  <li><a data-toggle="dropdown" href="#">Recommendation &nbsp </span class="glyphicon glyphicon-volume-up"> <span class="caret"></span></a>
+                  <li><a data-toggle="dropdown" href="#">Recommendation &nbsp <span class="glyphicon glyphicon-volume-up"><span class="caret" ></span></span></a>
                   <ul class="dropdown-menu" >
-                        <li><a href="member_difficulty.php">Difficulty &nbsp</a></li>
-                        <li><a href="member_recommend.php">Advanced &nbsp</a></li></ul></li>
+                        <li><a href="member_recommend.php">Course Recommend &nbsp</a></li>
+                        <li><a href="#">Group Recommend &nbsp</a></li></ul></li>
                   <li><a href="member_study.php">Study Room &nbsp <span class="glyphicon glyphicon-list-alt"></span></a></li>
                   <li><a href="#">About &nbsp <span class="glyphicon glyphicon-user"></span></a></li>
                   <li><a href="member_contact.php">Contact &nbsp <span class="glyphicon glyphicon-phone"></span></a></li>
-                  <li><a href="#">Search &nbsp <span class="glyphicon glyphicon-globe"></span></a></li>
+                  <li><a data-toggle="dropdown" href="#">Search &nbsp <span class="glyphicon glyphicon-globe"><span class="caret" ></span></span></a>
+                  <ul class="dropdown-menu" >
+                       <li><a href="member_search.php">Course Name Search &nbsp</a></li>
+                       <li><a href="member_difficulty.php">Course Difficulty Search &nbsp</a></li></ul></li>
                   <li><a href="member_management.php">Management &nbsp <span class="glyphicon glyphicon-wrench"></span></a></li>
               </ul>
               </div>

@@ -2,9 +2,9 @@
 
 	$db_host = 'localhost';
 	$db_user = 'root';
-	$db_pass = '';
+	$db_pass = '159357';
 	
-	$db_name = 'chat';
+	$db_name = 'recommender_sys';
 	
 	if($connection = mysql_connect($db_host, $db_user, $db_pass)) {
 	
