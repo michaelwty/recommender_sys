@@ -49,7 +49,7 @@ $content = '
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body id="whole">
         <div id="wrapper">
             <div id="banner">   
                     <div class="container">
@@ -135,6 +135,7 @@ $content = '
                        <li><a href="member_search.php">Course Name Search &nbsp</a></li>
                        <li><a href="member_difficulty.php">Course Difficulty Search &nbsp</a></li></ul></li>
                   <li><a href="member_management.php">Management &nbsp <span class="glyphicon glyphicon-wrench"></span></a></li>
+                 <li><a href="member_calender.php">Calender &nbsp <span class="glyphicon glyphicon-time"></span></a></li>
               </ul>
               </div>
 

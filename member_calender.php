@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,13 +9,13 @@
         <title><?php echo $title; ?></title>
         <link rel="stylesheet" type="text/css" href="Styles/Stylesheet.css" />
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/calender.css" />
     </head>
 
     <body id="whole">
         <div id="wrapper">
             <div id="banner">   
-                
-                <div class="container">
+                    <div class="container">
       <h2>New Courses Are Coming!!!</h2>
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -66,7 +67,8 @@
         </a>
       </div>
     </div>          
-            </div>          
+            </div>
+            
     <?php
         session_start();
         if($_SESSION['username']){
@@ -102,85 +104,81 @@
 
 
             <div id="content_area">
-<?php
-if(isset($_POST['email'])) {
-	
-	// CHANGE THE TWO LINES BELOW
-	$email_to = "meghmeg17@gmail.com";
-	
-	$email_subject = "Email from meghz17 personal webpage";
-	
-	
-	function died($error) {
-		// your error code can go here
-		echo "We're sorry, but there's errors found with the form you submitted.<br /><br />";
-		echo $error."<br /><br />";
-		echo "Please go back and fix these errors.<br /><br />";
-		die();
-	}
-	
-	// validation expected data exists
-	if(!isset($_POST['first_name']) ||
-		!isset($_POST['last_name']) ||
-		!isset($_POST['email']) ||
-		!isset($_POST['telephone']) ||
-		!isset($_POST['comments'])) {
-		died('We are sorry, but there appears to be a problem with the form you submitted.');		
-	}
-	
-	$first_name = $_POST['first_name']; // required
-	$last_name = $_POST['last_name']; // required
-	$email_from = $_POST['email']; // required
-	$telephone = $_POST['telephone']; // not required
-	$comments = $_POST['comments']; // required
-	
-	$error_message = "";
-	$email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
-  if(!preg_match($email_exp,$email_from)) {
-  	$error_message .= 'The Email Address you entered does not appear to be valid.<br />';
-  }
-	$string_exp = "/^[A-Za-z .'-]+$/";
-  if(!preg_match($string_exp,$first_name)) {
-  	$error_message .= 'The First Name you entered does not appear to be valid.<br />';
-  }
-  if(!preg_match($string_exp,$last_name)) {
-  	$error_message .= 'The Last Name you entered does not appear to be valid.<br />';
-  }
-  if(strlen($comments) < 2) {
-  	$error_message .= 'The Comments you entered do not appear to be valid.<br />';
-  }
-  if(strlen($error_message) > 0) {
-  	died($error_message);
-  }
-	$email_message = "Form details below.\n\n";
-	
-	function clean_string($string) {
-	  $bad = array("content-type","bcc:","to:","cc:","href");
-	  return str_replace($bad,"",$string);
-	}
-	
-	$email_message .= "First Name: ".clean_string($first_name)."\n";
-	$email_message .= "Last Name: ".clean_string($last_name)."\n";
-	$email_message .= "Email: ".clean_string($email_from)."\n";
-	$email_message .= "Telephone: ".clean_string($telephone)."\n";
-	$email_message .= "Comments: ".clean_string($comments)."\n";
-	
-	
-// create email headers
-$headers = 'From: '.$email_from."\r\n".
-'Reply-To: '.$email_from."\r\n" .
-'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
-?>
+                 <?php 
+                     /* draws a calendar */
+                    function draw_calendar($month,$year){
 
-<!-- place your own success html below -->
+	                    /* draw table */
+	                    $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
 
-Thank you for contacting us. We will get back to you ASAP - Meghz and Wang
+	                    /* table headings */
+	                    $headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+	                    $calendar.= '<tr class="calendar-row"><td class="calendar-day-head">'.implode('</td><td class="calendar-day-head">',$headings).'</td></tr>';
 
-<?php
-}
-die();
-?>
+	                    /* days and weeks vars now ... */
+	                    $running_day = date('w',mktime(0,0,0,$month,1,$year));
+	                    $days_in_month = date('t',mktime(0,0,0,$month,1,$year));
+	                    $days_in_this_week = 1;
+	                    $day_counter = 0;
+	                    $dates_array = array();
+
+	                    /* row for week one */
+	                    $calendar.= '<tr class="calendar-row">';
+
+	                    /* print "blank" days until the first of the current week */
+	                    for($x = 0; $x < $running_day; $x++):
+		                    $calendar.= '<td class="calendar-day-np"> </td>';
+		                    $days_in_this_week++;
+	                    endfor;
+
+	                    /* keep going with days.... */
+	                    for($list_day = 1; $list_day <= $days_in_month; $list_day++):
+		                    $calendar.= '<td class="calendar-day">';
+			                    /* add in the day number */
+			                    $calendar.= '<div class="day-number">'.$list_day.'</div>';
+
+			                    /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
+			                    $calendar.= str_repeat('<p> </p>',2);
+
+		                    $calendar.= '</td>';
+		                    if($running_day == 6):
+			                    $calendar.= '</tr>';
+			                    if(($day_counter+1) != $days_in_month):
+				                    $calendar.= '<tr class="calendar-row">';
+			                    endif;
+			                    $running_day = -1;
+			                    $days_in_this_week = 0;
+		                    endif;
+		                    $days_in_this_week++; $running_day++; $day_counter++;
+	                    endfor;
+
+	                    /* finish the rest of the days in the week */
+	                    if($days_in_this_week < 8):
+		                    for($x = 1; $x <= (8 - $days_in_this_week); $x++):
+			                    $calendar.= '<td class="calendar-day-np"> </td>';
+		                    endfor;
+	                    endif;
+
+	                    /* final row */
+	                    $calendar.= '</tr>';
+
+	                    /* end the table */
+	                    $calendar.= '</table>';
+
+	                    /* all done, return result */
+	                    return $calendar;
+                    }
+
+                    /* sample usages */
+                    echo '<h2>July 2009</h2>';
+                    echo draw_calendar(7,2009);
+
+                    echo '<h2>August 2009</h2>';
+                    echo draw_calendar(8,2009);
+ 
+ 
+ 
+  ?>
             </div>
             
             <div id="sidebar">

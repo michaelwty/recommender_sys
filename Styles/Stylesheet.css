@@ -3,11 +3,13 @@ body
     font-family: lucida grande ,tahoma,verdana,arial,sans-serif;
     background-color: #e9e9e9;
 }
+
 #whole {
     backface-visibility: visible;
     background-color: #500000;
     -moz-animation-play-state: running;
 }
+
 body p
 {
     font-size: 0.8em;
@@ -23,14 +25,6 @@ body p
     border: 5px solid #dedede;
 }
 
-#banner
-{
-    background-image: url(../Images/banner.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 5px solid #dedede;    
-    height: 360px;
-}
 
 #content_area
 {
@@ -38,12 +32,6 @@ body p
     width: 750px;
     margin: 20px 0 20px 0;
     padding: 10px;
-    color: #DAA520;
-    
-}
-
-#content_area a {
-    color: #DAA520;
 }
 
 #sidebar
@@ -53,7 +41,6 @@ body p
     height: 400px;
     margin: 20px 10px;
     padding: 10px;
-    
     border: 2px solid #E3E3E3;
 }
 
@@ -164,12 +151,10 @@ label
 {
     float: left;
     width: 100px;
-    font-size: larger;
-    resize: both;
-    font-weight: bolder;
-    background-color: #500000;
-    color:#DAA520;
+    font-weight: bold;
 }
+
+
 #loginLabel
 {
     float: left;
